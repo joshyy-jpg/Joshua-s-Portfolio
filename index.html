@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#080808" />
+    <title>Joshua Lee — Product, people, and the spaces between</title>
+    <meta name="description" content="Joshua Lee — NYU Business & Technology Management, Class of 2028. Client websites, consumer product concepts, and startup go-to-market work." />
+    <meta property="og:title" content="Joshua Lee" />
+    <meta property="og:description" content="Product, people, and the spaces between. NYU Business & Technology Management, Class of 2028." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Joshua Lee" />
+    <meta property="og:url" content="https://joshuarlee.com/" />
+    <meta property="og:image" content="https://joshuarlee.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Joshua Lee. Building products at the intersection of technology and culture. Product, Design, Strategy." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script>
+      // Motion is opt-in: content is visible unless this class is present.
+      // If the reveal system has not started within 4s, drop the class so nothing stays hidden.
+      ;(function () {
+        var root = document.documentElement
+        var mq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)')
+        if (mq && mq.matches) return
+        root.classList.add('motion')
+        setTimeout(function () {
+          if (!window.__revealReady) root.classList.remove('motion')
+        }, 4000)
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Netlify detects forms at deploy time from static HTML; the React form in Home.tsx posts to this one. -->
+    <form name="website-project" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input name="bot-field" />
+      <input name="subject" />
+      <input name="name" />
+      <input name="email" type="email" />
+      <input name="business" />
+      <textarea name="message"></textarea>
+    </form>
+    <noscript>
+      <div style="padding:24px;font-family:system-ui,sans-serif;color:#F2F0EB;background:#080808">
+        <p>Joshua Lee — NYU Business &amp; Technology Management, Class of 2028.</p>
+        <p><a style="color:#F2F0EB" href="mailto:joshualee@nyu.edu">joshualee@nyu.edu</a> ·
+          <a style="color:#F2F0EB" href="/Joshua_Lee_Resume.pdf">Résumé (PDF)</a> ·
+          <a style="color:#F2F0EB" href="https://www.linkedin.com/in/joshua-r-lee/">LinkedIn</a></p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
