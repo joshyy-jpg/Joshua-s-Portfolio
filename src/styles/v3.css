@@ -1398,4 +1398,8 @@ html { scroll-padding-top: 100px; }
 @media(max-width:599px) { .resume #resume-title { font-size:clamp(1.8rem,7.4vw,2.75rem); } }
 
 .project-logo.loop-wordmark { width:auto; font-family:var(--sans); font-size:clamp(3rem,6vw,6rem); font-weight:550; letter-spacing:-.075em; line-height:1; }
-.work-row .loop-wordmark { font-size:2rem; }
+.index-thumb { container-type: inline-size; }
+.index-thumb .project-logo.loop-wordmark { width:100%; text-align:center; font-size:30cqi; padding-right:.075em; }
+
+/* Match the Loop demo’s white canvas throughout its tile. */
+.work-grid .tile-demo-loop, .tile-demo-loop .video, .tile-demo-loop video { background: #fff; }

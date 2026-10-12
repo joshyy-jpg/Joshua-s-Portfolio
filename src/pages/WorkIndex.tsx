@@ -35,7 +35,7 @@ export default function WorkIndex() {
                 <span className="index-desc">{p.description}</span>
               </span>
               <span className="index-role">
-                <span className="index-key">Role </span>
+                <span className="index-key">{p.slug === 'hp-tech-ventures' ? 'Focus ' : 'Role '}</span>
                 {p.role}
               </span>
               <span className="index-status">

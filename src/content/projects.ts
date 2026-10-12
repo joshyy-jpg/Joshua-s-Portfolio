@@ -746,16 +746,16 @@ export const projects: Project[] = [
     title: 'HP Tech Ventures',
     description:
       'A venture capital internship: screening early-stage startups and leading the investment analysis on one.',
-    role: 'Venture capital intern',
-    status: 'Internship, Jan – Mar 2026',
+    role: 'Venture capital',
+    status: 'Completed, Jan – Mar 2026',
     year: '2026',
     summary:
       'A remote venture capital internship with HP Tech Ventures, HP’s corporate venture arm. I screened startups in thermal management and thermal interface materials, then led the investment analysis on one of them.',
     facts: [
-      { label: 'Role', value: 'Venture Capital Intern' },
+      { label: 'Focus', value: 'Venture capital' },
       { label: 'Context', value: 'HP Tech Ventures · Remote' },
       { label: 'Timeline', value: 'Jan – Mar 2026' },
-      { label: 'Status', value: 'Internship — completed' },
+      { label: 'Status', value: 'Completed' },
     ],
     hero: [],
     sections: [

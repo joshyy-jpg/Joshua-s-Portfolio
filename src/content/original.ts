@@ -131,7 +131,7 @@ export const originalProjects: Record<string, { title: string; description: stri
     "summary": "Developed a scalable CRM/ERP product prototype for Microsoft and contributed to a published NYU study on modern enterprise data practices and system adoption barriers."
   },
   "hp-tech-ventures": {
-    "title": "HP Tech Ventures — VC Internship",
+    "title": "HP Tech Ventures — Venture Capital",
     "description": "Conducted investment due diligence on early-stage startups, led analysis on NovoLINC, and delivered an investment memo evaluating market size, team, and strategic fit with HP's thesis.",
     "summary": "Conducted investment due diligence on early-stage startups, led analysis on NovoLINC, and delivered an investment memo evaluating market size, team, and strategic fit with HP's thesis."
   },

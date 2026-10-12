@@ -132,16 +132,17 @@ function WorkGrid() {
     <div className="work-grid">
       {homeGrid.map(({ slug }, i) => {
         const p = getProject(slug)!
+        const demo = p.hero.find(media => media.kind === 'video')
         return (
           <Reveal as="article" className="tile" key={slug} delay={(i % 3) * 70}>
-            {p.slug === 'spotify-community-tab' && <div className="tile-plate tile-demo">
-              <DemoVideo media={{kind:'video',src:'/media/spotify-demo.webm',poster:'/media/spotify-feed',alt:'Spotify Community Tab prototype walkthrough',width:1280,height:720}} />
+            {demo && <div className={`tile-plate tile-demo${p.slug === 'loop' ? ' tile-demo-loop' : ''}`}>
+              <DemoVideo media={demo} />
             </div>}
             <Link
               to={`/work/${p.slug}`}
               className="tile-link"
             >
-              {p.slug !== 'spotify-community-tab' && <span className="tile-plate">
+              {!demo && <span className="tile-plate">
                 <ProjectLogo name={p.logo} />
               </span>}
               <span className="tile-caption">
