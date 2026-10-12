@@ -88,10 +88,15 @@ function OffTheTopLogo({ className }: LogoProps) {
   return <img src="/logos/off-the-top-stack.png" alt="" className={className} width={376} height={416} draggable={false} />
 }
 
-export type LogoKey = 'off-the-top' | 'spotify' | 'lee-way' | 'spot' | 'hp' | 'microsoft'
+function LoopLogo({ className }: LogoProps) {
+  return <span className={`${className ?? ''} loop-wordmark`} aria-hidden="true">loop.</span>
+}
+
+export type LogoKey = 'loop' | 'off-the-top' | 'spotify' | 'lee-way' | 'spot' | 'hp' | 'microsoft'
 
 const logos: Record<LogoKey, (p: LogoProps) => React.JSX.Element> = {
   'off-the-top': OffTheTopLogo,
+  loop: LoopLogo,
   spotify: SpotifyLogo,
   'lee-way': LeeWayLogo,
   spot: SpotLogo,

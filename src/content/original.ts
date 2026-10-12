@@ -93,7 +93,7 @@ export const originalEducation = {
   "school": "New York University — Tandon School of Engineering",
   "degree": "B.S. Business & Technology Management",
   "dates": "Fall 2024 — May 2028",
-  "detail": "GPA: 3.60 / 4.00 · Major GPA: 3.90 / 4.00. Coursework: Project Management, Design Thinking, Entrepreneurship, Intro to Programming & Problem Solving, Business Info Systems & Data Tech, Probability & Statistics."
+  "detail": "Major GPA: 3.90 / 4.00. Coursework: Project Management, Design Thinking, Entrepreneurship, Intro to Programming & Problem Solving, Business Info Systems & Data Tech, Probability & Statistics."
 }
 export const originalSkills = [
   {

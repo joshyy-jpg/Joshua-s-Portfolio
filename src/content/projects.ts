@@ -1,3 +1,4 @@
+import { loop } from './loop'
 import { originalProjects, originalCases } from './original'
 import type { LogoKey } from '../components/Logos'
 
@@ -82,6 +83,7 @@ export type Project = {
 }
 
 export const projects: Project[] = [
+  loop,
   {
     slug: 'off-the-top',
     code: 'OTT',
@@ -830,10 +832,10 @@ export const caseStudies = projects.filter((p) => p.kind === 'case')
 
 /** Home grid: two rows, wide/narrow/narrow then narrow/narrow/wide. */
 export const homeGrid: { slug: string; size: 'wide' | 'narrow' }[] = [
+  { slug: 'spot', size: 'narrow' },
   { slug: 'off-the-top', size: 'narrow' },
   { slug: 'spotify-community-tab', size: 'wide' },
   { slug: 'lee-way', size: 'narrow' },
-  { slug: 'spot', size: 'narrow' },
   { slug: 'microsoft-dynamics-365', size: 'narrow' },
   { slug: 'hp-tech-ventures', size: 'wide' },
 ]

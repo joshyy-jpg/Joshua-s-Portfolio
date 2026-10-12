@@ -1396,3 +1396,6 @@ html { scroll-padding-top: 100px; }
 .resume #resume-title em { font-size:1em; }
 .resume #resume-title .split-sub { margin-top:18px; font-size:1rem; line-height:1.5; letter-spacing:0; }
 @media(max-width:599px) { .resume #resume-title { font-size:clamp(1.8rem,7.4vw,2.75rem); } }
+
+.project-logo.loop-wordmark { width:auto; font-family:var(--sans); font-size:clamp(3rem,6vw,6rem); font-weight:550; letter-spacing:-.075em; line-height:1; }
+.work-row .loop-wordmark { font-size:2rem; }

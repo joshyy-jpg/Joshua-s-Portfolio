@@ -18,7 +18,6 @@ export default function WorkIndex() {
 
       <ol className="index-list">
         <li className="index-row index-row-head grid" aria-hidden="true">
-          <span className="index-num">No.</span>
           <span className="index-title">Project</span>
           <span className="index-role">Role</span>
           <span className="index-status">Status</span>
@@ -27,7 +26,6 @@ export default function WorkIndex() {
         {projects.map((p) => (
           <Reveal as="li" key={p.slug}>
             <Link to={`/work/${p.slug}`} className="index-row grid">
-              <span className="index-num num">{p.index}</span>
               <span className="index-thumb" aria-hidden="true">
                 <ProjectLogo name={p.logo} />
               </span>
