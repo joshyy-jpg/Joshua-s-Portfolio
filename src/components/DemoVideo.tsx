@@ -6,6 +6,7 @@ import PlayPause from './PlayPause'
 
 /** Muted demo that plays only while in view, with a visible pause control and a still fallback. */
 export default function DemoVideo({ media }: { media: VideoMedia }) {
+  const explicitPoster = /\.(png|jpe?g|webp)$/i.test(media.poster)
   const ref = useRef<HTMLVideoElement>(null)
   const userPaused = useRef(false)
   const [playing, setPlaying] = useState(false)
@@ -28,6 +29,8 @@ export default function DemoVideo({ media }: { media: VideoMedia }) {
     io.observe(video)
     return () => io.disconnect()
   }, [reduce, failed])
+
+  if (failed && explicitPoster) return <img src={media.poster} alt={media.alt} width={media.width} height={media.height} className="media-img" />
 
   if (failed) {
     return (
@@ -55,7 +58,7 @@ export default function DemoVideo({ media }: { media: VideoMedia }) {
         loop
         playsInline
         preload="metadata"
-        poster={`${media.poster}.jpg`}
+        poster={explicitPoster ? media.poster : `${media.poster}.jpg`}
         width={media.width}
         height={media.height}
         aria-label={media.alt}
@@ -63,7 +66,7 @@ export default function DemoVideo({ media }: { media: VideoMedia }) {
         onPause={() => setPlaying(false)}
         onError={() => setFailed(true)}
       >
-        <source src={media.src} type="video/webm" onError={() => setFailed(true)} />
+        <source src={media.src} type={media.src.endsWith('.mp4') ? 'video/mp4' : 'video/webm'} onError={() => setFailed(true)} />
       </video>
       <PlayPause playing={playing} onToggle={toggle} label="demo video" />
     </div>

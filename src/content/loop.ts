@@ -32,7 +32,15 @@ export const loop: Project = {
       "value": "Browser-local storage; no Instagram integration"
     }
   ],
-  "hero": [],
+  "hero": [{
+    "kind": "video",
+    "src": "/media/loop-portfolio-demo.mp4",
+    "poster": "/media/loop-poster.png",
+    "width": 1280,
+    "height": 720,
+    "alt": "Loop product walkthrough: capture everyday moments, collect a weekly draft, review, and watch a weekly Loop.",
+    "caption": "Interactive prototype walkthrough. Content is stored locally; Instagram integration and multi-user accounts are not yet implemented."
+  }],
   "sections": [
     {
       "type": "text",
