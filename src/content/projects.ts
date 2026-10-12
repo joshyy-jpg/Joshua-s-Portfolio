@@ -832,7 +832,7 @@ export const caseStudies = projects.filter((p) => p.kind === 'case')
 
 /** Home grid: two rows, wide/narrow/narrow then narrow/narrow/wide. */
 export const homeGrid: { slug: string; size: 'wide' | 'narrow' }[] = [
-  { slug: 'spot', size: 'narrow' },
+  { slug: 'loop', size: 'narrow' },
   { slug: 'off-the-top', size: 'narrow' },
   { slug: 'spotify-community-tab', size: 'wide' },
   { slug: 'lee-way', size: 'narrow' },
