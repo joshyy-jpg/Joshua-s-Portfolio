@@ -3,7 +3,7 @@
 //   2. the koi mark holds in the middle on black
 //   3. J slides out from behind it to the left, L to the right
 //   4. the J · koi · L group moves to the bottom left, then spreads across the bottom
-//   5. the hero graphic opens from a small box in the middle to full screen
+//   5. the hero fades in at its final size
 //   6. The mark returns to center and dissolves into the living koi.
 // The hero underneath is already in its final state, so if anything fails the page is
 // simply there. Any key, click, wheel or touch skips straight to the end.
@@ -23,6 +23,9 @@ export function shouldPlayIntro() {
   return (
     !played &&
     landing === '/' &&
+    window.location.pathname === '/' &&
+    !window.location.hash &&
+    window.scrollY < 40 &&
     root().classList.contains('motion') &&
     typeof Element !== 'undefined' &&
     typeof Element.prototype.animate === 'function'
@@ -47,6 +50,13 @@ const move = (x: number, y: number, w: number, h: number, s = 1, r = 0) =>
 
 export function runIntro({ overlay, graphic, onReveal, onDone }: Parts): () => void {
   played = true
+  const initialBounds = graphic.getBoundingClientRect()
+  if (window.location.hash || window.scrollY > 40 || initialBounds.bottom <= 0) {
+    markIntroDone()
+    onReveal()
+    onDone()
+    return () => {}
+  }
   const r = root()
   r.classList.remove('intro-done')
   r.classList.add('intro-running', 'intro-wait')
@@ -114,7 +124,7 @@ function play(overlay: HTMLElement, graphic: HTMLElement, reveal: () => void, do
   const bounds = graphic.getBoundingClientRect()
   const logoX = bounds.left + bounds.width * .5
   const logoY = bounds.top + bounds.height * .39
-  const logoS = Math.min(bounds.width * .28, bounds.height * .28) / ch
+  const logoS = k // Hold the settled size; dissolve instead of zooming toward the viewer.
 
   const anims: Animation[] = []
   // Keep the opening black, then expose the expanding page beneath the lockup.
@@ -191,7 +201,7 @@ function play(overlay: HTMLElement, graphic: HTMLElement, reveal: () => void, do
     done()
   }
   const skip = () => anims.forEach((a) => a.finish())
-  const events = ['wheel', 'keydown', 'pointerdown', 'touchstart'] as const
+  const events = ['wheel', 'keydown', 'pointerdown', 'touchstart', 'scroll', 'hashchange'] as const
   events.forEach((e) => window.addEventListener(e, skip, { passive: true }))
   const failsafe = window.setTimeout(complete, D + 1500)
   Promise.all(anims.map((a) => a.finished)).then(complete, complete)

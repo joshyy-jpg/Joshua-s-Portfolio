@@ -6,7 +6,7 @@ export const blueprint: Project = {
   "code": "BLUP",
   "logo": "blueprint",
   "kind": "case",
-  "title": "Blueprint",
+  "title": "Blueprint - Salesforce Project",
   "subtitle": "Dashboardless CRM",
   "description": "A dashboardless CRM concept bringing Salesforce workflows into Slack, developed for a Spring 2026 NYC Salesforce hackathon.",
   "role": "Product concept & strategy",
@@ -43,6 +43,7 @@ export const blueprint: Project = {
     }
   ],
   "sections": [
+{"type": "media", "layout": "full", "items": [{"kind": "image", "fit": "contain", "src": "/media/field-salesforce", "alt": "Case competition participants in front of the NYU PMC case competition screen with Salesforce branding.", "width": 1800, "height": 1200, "caption": "NYC Salesforce Product Management · Spring 2026"}]},
     {
       "type": "text",
       "label": "Problem",

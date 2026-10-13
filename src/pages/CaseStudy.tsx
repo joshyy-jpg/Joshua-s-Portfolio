@@ -241,7 +241,7 @@ export default function CaseStudy() {
           <span>{project.code}—0001</span>
           {project.external && (
             <a href={project.external.href} target="_blank" rel="noopener noreferrer" className="cs-plate-link">
-              {project.external.label} <span aria-hidden="true">↗</span>
+              {project.external.label}
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
           )}
@@ -285,7 +285,7 @@ export default function CaseStudy() {
           <span className="cs-live-dot" aria-hidden="true" />
           <span className="cs-live-dot" aria-hidden="true" />
           <a href={project.external.href} target="_blank" rel="noopener noreferrer" className="cs-live-link">
-            Live site <span aria-hidden="true">↗</span>
+            Live site
             <span className="sr-only"> — {project.external.label} (opens in a new tab)</span>
           </a>
           <span className="meta">{project.external.label}</span>
@@ -299,7 +299,7 @@ export default function CaseStudy() {
             {kindLabel(next)} {next.index}
           </span>
           <span className="cs-next-title">
-            {next.title} <span aria-hidden="true">→</span>
+            {next.title}
           </span>
         </Link>
         <Link to="/work" className="link cs-all">

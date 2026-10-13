@@ -69,7 +69,7 @@ export const originalLeadership = [
     "role": "Mentorship Lead",
     "dates": "Fall 2026 — Present",
     "points": [
-      "Pair 10 mentees with industry mentors from Capital One, Verizon, PwC, Goldman Sachs, Bain, and Mastercard, and host weekly mentor-led workshops. Co-organizing an AI Fellowship kickoff fireside chat and a hands-on Claude and Codex workshop for the 12-person product team."
+      "Paired 13 mentees with industry mentors from Capital One, Verizon, PwC, Goldman Sachs, Bain, and Mastercard to support recruiting, projects, and professional development. Host weekly mentor-led workshops. Co-organizing an AI Fellowship kickoff fireside chat and a hands-on Claude and Codex workshop for the 12-person product team."
     ]
   },
   {

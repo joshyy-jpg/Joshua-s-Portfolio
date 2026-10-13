@@ -44,9 +44,6 @@ export default function WorkIndex() {
               </span>
               <span className="index-year">
                 {p.year}
-                <span className="arrow" aria-hidden="true">
-                  →
-                </span>
               </span>
             </Link>
           </Reveal>

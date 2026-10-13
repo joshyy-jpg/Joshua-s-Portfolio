@@ -81,7 +81,7 @@ function Hero() {
   return (
     <section className="hero zen-hero" aria-labelledby="hero-title" data-dock-after>
       <div className="zen-stage" ref={graphic}>
-        <RealKoi active={fishActive} enter={intro} />
+        <RealKoi active={fishActive} />
         <div className="zen-copy">
           <HeroName />
           <p className="zen-roles">
@@ -89,13 +89,13 @@ function Hero() {
           </p>
           <p className="zen-ctas">
             <SmartLink to="#work" className="pill rivets zen-btn zen-btn-primary">
-              View work <span aria-hidden="true">↓</span>
+              View work
             </SmartLink>
             <SmartLink {...resumeLink} className="pill rivets zen-btn">
-              Résumé <span aria-hidden="true">↗</span>
+              Résumé
             </SmartLink>
             <SmartLink to="#start-project" className="pill rivets zen-btn">
-              Need a website? <span aria-hidden="true">→</span>
+              Need a website?
             </SmartLink>
           </p>
         </div>
@@ -120,7 +120,7 @@ function Perspective() {
         </div>
       ))}
       <div className="perspective-action">
-        <Link to="/about" className="pill pill-dark rivets">More about me <span aria-hidden="true">↗</span></Link>
+        <Link to="/about" className="pill pill-dark rivets">More about me</Link>
       </div>
     </section>
   )
@@ -190,7 +190,7 @@ function SelectedWork() {
           </span>
         </h2>
         <Link to="/work" className="pill pill-light rivets work-all-top">
-          All projects <span aria-hidden="true">↗</span>
+          All projects
         </Link>
       </div>
 
@@ -271,10 +271,10 @@ function ProfessionalExperience() {
       </ol>
       <p className="resume-actions">
         <SmartLink {...resumeLink} className="pill pill-dark rivets">
-          Download résumé <span aria-hidden="true">↗</span>
+          Download résumé
         </SmartLink>
         <Link to="/about#experience" className="pill pill-light rivets">
-          Leadership &amp; education <span aria-hidden="true">→</span>
+          Leadership &amp; education
         </Link>
       </p>
     </section>
@@ -320,13 +320,13 @@ function WebsiteDevelopment() {
 
         <div className="offer-controls">
           <button type="button" className="offer-arrow" onClick={() => go(index - 1)} aria-label="Previous slide">
-            ←
+            Previous
           </button>
           <p className="offer-count" aria-live="polite">
             <Glyph shape="triangle" /> {index + 1} / {count}
           </p>
           <button type="button" className="offer-arrow" onClick={() => go(index + 1)} aria-label="Next slide">
-            →
+            Next
           </button>
         </div>
 
@@ -339,7 +339,7 @@ function WebsiteDevelopment() {
             <h3 className="offer-title">{slide.title}</h3>
             <p className="offer-copy">{slide.copy}</p>
             <SmartLink {...slide.link} className="pill pill-dark rivets">
-              {slide.link.label} <span aria-hidden="true">{slide.link.href ? '↗' : '→'}</span>
+              {slide.link.label}
             </SmartLink>
             <span className="offer-mark offer-mark-r" aria-hidden="true" />
           </div>
@@ -419,7 +419,7 @@ function ProjectContact() {
         </label>
         <div className="project-actions">
           <button type="submit" className="pill pill-dark rivets" disabled={state === 'sending'}>
-            {state === 'sending' ? 'Sending…' : 'Send'} <span aria-hidden="true">→</span>
+            {state === 'sending' ? 'Sending…' : 'Send'}
           </button>
           <p className="project-note" aria-live="polite">
             {sendNote[state]}

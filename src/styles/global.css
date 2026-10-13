@@ -222,12 +222,12 @@ em {
 }
 
 .inline-links .link::after {
-  content: '→';
+  content: none;
   margin-left: 0.4em;
 }
 
 .inline-links a[target='_blank'].link::after {
-  content: '↗';
+  content: none;
 }
 
 /* Small geometric markers */
@@ -1966,7 +1966,7 @@ em {
 }
 
 .cs-all::after {
-  content: '→';
+  content: none;
   margin-left: 0.4em;
 }
 
@@ -2162,7 +2162,7 @@ em {
 }
 
 .role-link::after {
-  content: '→';
+  content: none;
   margin-left: 0.4em;
 }
 

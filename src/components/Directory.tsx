@@ -161,9 +161,6 @@ export function Dock() {
                       onClick={() => closeMenu(Boolean(item.href))}
                     >
                       <span className="directory-label">{item.label}</span>
-                      <span className="directory-arrow" aria-hidden="true">
-                        {item.href ? '↗' : '→'}
-                      </span>
                     </SmartLink>
                   </li>
                 )
@@ -187,7 +184,7 @@ export function Dock() {
             <span className="dock-icon" aria-hidden="true" />
           </button>
           <SmartLink {...resumeLink} className="dock-resume rivets">
-            Résumé <span aria-hidden="true">↗</span>
+            Résumé
           </SmartLink>
         </div>
       </div>

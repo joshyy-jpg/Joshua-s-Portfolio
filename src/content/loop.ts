@@ -7,7 +7,7 @@ export const loop: Project = {
   "code": "LOOP",
   "logo": "loop",
   "kind": "case",
-  "title": "Loop",
+  "title": "Loop - Meta Project",
   "subtitle": "Stay in the loop.",
   "description": "A Meta hackathon finalist project turning everyday moments into a weekly recap for friends across distance.",
   "role": "Hackathon & product development",

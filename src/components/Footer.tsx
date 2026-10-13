@@ -44,22 +44,22 @@ export default function Footer() {
       <ul className="footer-grid">
         <li className="footer-cell">
           <SmartLink {...emailLink} className="footer-link">
-            {site.email} <span aria-hidden="true">→</span>
+            {site.email}
           </SmartLink>
         </li>
         <li className="footer-cell">
           <SmartLink {...resumeLink} className="footer-link">
-            Résumé, PDF <span aria-hidden="true">↗</span>
+            Résumé, PDF
           </SmartLink>
         </li>
         <li className="footer-cell">
           <SmartLink {...linkedinLink} className="footer-link">
-            LinkedIn <span aria-hidden="true">↗</span>
+            LinkedIn
           </SmartLink>
         </li>
         <li className="footer-cell">
           <SmartLink to="/work" className="footer-link">
-            All projects <span aria-hidden="true">→</span>
+            All projects
           </SmartLink>
         </li>
       </ul>
@@ -86,7 +86,7 @@ export default function Footer() {
             Class of 2028
           </p>
           <button type="button" className="to-top" onClick={toTop}>
-            Back to top <span aria-hidden="true">↑</span>
+            Back to top
           </button>
         </div>
         <p className="footer-copy">© {site.year} Joshua Lee</p>

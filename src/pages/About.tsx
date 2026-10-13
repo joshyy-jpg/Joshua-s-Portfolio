@@ -1,5 +1,5 @@
 import type { Role } from '../content/people'
-import { about, education, experience, leadership, skills } from '../content/people'
+import { about, aboutPhotoGroups, education, experience, leadership, skills } from '../content/people'
 import { resumeLink } from '../content/site'
 import { Link } from 'react-router-dom'
 import Lines from '../components/Lines'
@@ -28,6 +28,12 @@ function RoleList({ roles }: { roles: Role[] }) {
               ))}
             </ul>
           )}
+          {r.photo && (
+            <figure className="role-photo">
+              <Picture {...r.photo} sizes="(min-width: 768px) 70vw, 100vw" />
+              <figcaption className="meta">{r.photo.caption}</figcaption>
+            </figure>
+          )}
           {r.project && (
             <Link to={`/work/${r.project}`} className="link role-link">
               Case study
@@ -36,6 +42,19 @@ function RoleList({ roles }: { roles: Role[] }) {
         </Reveal>
       ))}
     </ol>
+  )
+}
+
+function PhotoGroup({ index }: { index: number }) {
+  return (
+    <section className="about-photo-mix" id={index === 1 ? 'competitions' : 'life'} aria-label="Travel, people, and moments">
+      {aboutPhotoGroups[index].map((photo, i) => (
+        <Reveal as="figure" className={`about-moment about-moment-${i + 1}`} key={photo.src}>
+          <Picture {...photo} sizes="(min-width: 768px) 40vw, 100vw" />
+          <figcaption className="meta">{photo.caption}</figcaption>
+        </Reveal>
+      ))}
+    </section>
   )
 }
 
@@ -75,14 +94,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="field grid" aria-label="Photos">
-        {about.field.map((f, i) => (
-          <Reveal as="figure" className={`field-item field-${i + 1}`} key={f.src} delay={i * 80}>
-            <Picture {...f} sizes="(min-width: 768px) 33vw, 100vw" />
-            <figcaption className="meta">{f.caption}</figcaption>
-          </Reveal>
-        ))}
-      </section>
+      <PhotoGroup index={0} />
 
       <section id="experience" className="experience grid" aria-labelledby="experience-title">
         <div className="experience-side">
@@ -110,6 +122,8 @@ export default function About() {
           <RoleList roles={leadership} />
         </div>
       </section>
+
+      <PhotoGroup index={1} />
 
       <section className="experience grid" aria-labelledby="education-title">
         <div className="experience-side">

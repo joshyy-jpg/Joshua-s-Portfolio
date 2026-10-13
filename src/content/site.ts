@@ -146,6 +146,8 @@ export const recent: {
   to: string
   image?: { src: string; alt: string; width: number; height: number }
 }[] = [
+{"title": "NYC Salesforce Product Management", "when": "Spring 2026, NYC", "note": "Blueprint · Dashboardless CRM", "to": "/work/blueprint", "image": {"src": "/media/field-salesforce", "alt": "Case competition participants in front of the NYU PMC case competition screen with Salesforce branding.", "width": 1800, "height": 1200}},
+{"title": "IBM × Stern Marketing Society", "when": "Case competition", "note": "Finalist", "to": "/about#competitions", "image": {"src": "/media/field-ibm", "alt": "Five case competition participants in front of the Marketing Society × IBM final-round presentation.", "width": 1024, "height": 768}},
   {
     title: 'VivaTech 2026',
     when: 'Summer 2026, Paris',
