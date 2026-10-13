@@ -93,7 +93,7 @@ function LoopLogo({ className }: LogoProps) {
 }
 
 function BlueprintLogo({ className }: LogoProps) {
-  return <span className={`${className ?? ''} blueprint-wordmark`} aria-hidden="true">Blueprint.</span>
+  return <span className={`${className ?? ''} blueprint-wordmark`} aria-hidden="true">Blueprint</span>
 }
 
 export type LogoKey = 'blueprint' | 'loop' | 'off-the-top' | 'spotify' | 'lee-way' | 'spot' | 'hp' | 'microsoft'

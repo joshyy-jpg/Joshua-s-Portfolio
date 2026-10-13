@@ -84,8 +84,8 @@ export type Project = {
 }
 
 export const projects: Project[] = [
-  blueprint,
   loop,
+  blueprint,
   {
     slug: 'off-the-top',
     code: 'OTT',
@@ -838,7 +838,7 @@ export const homeGrid: { slug: string; size: 'wide' | 'narrow' }[] = [
   { slug: 'off-the-top', size: 'narrow' },
   { slug: 'spotify-community-tab', size: 'wide' },
   { slug: 'lee-way', size: 'narrow' },
-  { slug: 'microsoft-dynamics-365', size: 'narrow' },
+  { slug: 'blueprint', size: 'narrow' },
   { slug: 'hp-tech-ventures', size: 'wide' },
 ]
 
