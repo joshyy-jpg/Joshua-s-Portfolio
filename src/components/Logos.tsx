@@ -92,11 +92,16 @@ function LoopLogo({ className }: LogoProps) {
   return <span className={`${className ?? ''} loop-wordmark`} aria-hidden="true">loop.</span>
 }
 
-export type LogoKey = 'loop' | 'off-the-top' | 'spotify' | 'lee-way' | 'spot' | 'hp' | 'microsoft'
+function BlueprintLogo({ className }: LogoProps) {
+  return <span className={`${className ?? ''} blueprint-wordmark`} aria-hidden="true">Blueprint.</span>
+}
+
+export type LogoKey = 'blueprint' | 'loop' | 'off-the-top' | 'spotify' | 'lee-way' | 'spot' | 'hp' | 'microsoft'
 
 const logos: Record<LogoKey, (p: LogoProps) => React.JSX.Element> = {
   'off-the-top': OffTheTopLogo,
   loop: LoopLogo,
+  blueprint: BlueprintLogo,
   spotify: SpotifyLogo,
   'lee-way': LeeWayLogo,
   spot: SpotLogo,

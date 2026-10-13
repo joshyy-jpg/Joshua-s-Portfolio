@@ -1,3 +1,4 @@
+import { blueprint } from './blueprint'
 import { loop } from './loop'
 import { originalProjects, originalCases } from './original'
 import type { LogoKey } from '../components/Logos'
@@ -83,6 +84,7 @@ export type Project = {
 }
 
 export const projects: Project[] = [
+  blueprint,
   loop,
   {
     slug: 'off-the-top',

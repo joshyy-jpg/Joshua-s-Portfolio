@@ -1403,3 +1403,6 @@ html { scroll-padding-top: 100px; }
 
 /* Match the Loop demo’s white canvas throughout its tile. */
 .work-grid .tile-demo-loop, .tile-demo-loop .video, .tile-demo-loop video { background: #fff; }
+
+.project-logo.blueprint-wordmark { width:auto; font-family:var(--sans); font-size:clamp(2rem,5vw,5rem); font-weight:550; letter-spacing:-.06em; line-height:1; }
+.index-thumb .project-logo.blueprint-wordmark { width:100%; text-align:center; font-size:17cqi; }
