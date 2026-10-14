@@ -54,7 +54,7 @@ function HeroName() {
   return (
     <h1 id="hero-title" className="zen-name" onPointerEnter={() => run('in')} onPointerLeave={() => run('out')}>
       <Link to="/about" aria-label="About Joshua Lee" style={{ cursor: 'pointer' }} onFocus={() => run('in')} onBlur={() => run('out')}>
-      Joshua Lee.
+      <span className="hero-initial hero-initial-j">J</span><span className="hero-name-mask"><span className="hero-name-tail">oshua</span></span>{' '}<span className="hero-initial hero-initial-l">L</span><span className="hero-name-mask"><span className="hero-name-tail">ee.</span></span>
       <span ref={red} className="zen-name-red" aria-hidden="true">
         Joshua Lee.
       </span>
