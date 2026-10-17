@@ -33,7 +33,7 @@ export default function RealKoi({ active, enter = false }: { active: boolean; en
       const ry = compact+(height*.18-compact)*spread
       const startLength = compact*2.6
       const length = startLength+(Math.min(mobile ? width*.65 : width*.31,height*.51)-startLength)*spread
-      ctx.globalCompositeOperation = 'screen'
+      ctx.globalCompositeOperation = 'source-over'
       // Arc-length sampling: each vertebra occupies an earlier point on the head's
       // route. Turns therefore bend the whole spine instead of rotating a rigid fish.
       const route = (q: number, i: number) => ({
@@ -68,7 +68,7 @@ export default function RealKoi({ active, enter = false }: { active: boolean; en
           ctx.save()
           ctx.translate(at.x,at.y);ctx.rotate(angle)
           ctx.drawImage(fish,0,t*fish.height,fish.width,fish.height/strips,
-            -wide*fin/2,0,wide*fin,Math.hypot(next.x-at.x,next.y-at.y)+.8)
+            -wide*fin/2,0,wide*fin,Math.hypot(next.x-at.x,next.y-at.y)+1.25)
           ctx.restore()
         }
       }

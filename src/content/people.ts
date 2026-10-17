@@ -129,6 +129,8 @@ const personalPhotos = [
 ]
 
 export const aboutPhotoGroups = [
- [personalPhotos[0], personalPhotos[1], about.field[0], personalPhotos[3]],
+ [personalPhotos[1], personalPhotos[3]],
  [competitions[0], personalPhotos[2], competitions[1], personalPhotos[4]],
 ]
+
+export const storyPhotos = [personalPhotos[0], about.field[0]]

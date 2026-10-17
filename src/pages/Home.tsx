@@ -101,9 +101,7 @@ function Hero() {
         </div>
       </div>
       {intro && <div className="intro" ref={overlay} aria-hidden="true">
-        <span className="intro-letter intro-j">J</span>
         <span className="intro-mark"><span className="intro-mark-disc" /><img src={KOI_SRC} alt="" draggable={false} /></span>
-        <span className="intro-letter intro-l">L</span>
       </div>}
     </section>
   )

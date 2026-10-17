@@ -22,19 +22,17 @@ uniform vec3 wakes[12];
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
 float noise(vec2 p){vec2 a=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(a),hash(a+vec2(1,0)),f.x),mix(hash(a+vec2(0,1)),hash(a+1.),f.x),f.y);}
 float surface(vec2 p){
- // Directional wave trains with varied wavelengths and phase velocities.
- float h=sin(p.x*.014+p.y*.019-time*.62)*.70;
- h+=sin(p.x*-.026+p.y*.031-time*.83)*.35;
- h+=sin(p.x*.044+p.y*.012-time*1.04)*.16;
- h+=sin(p.x*-.055+p.y*.068-time*1.32)*.08;
- h+=(noise(p*.016+vec2(time*.04,-time*.035))-.5)*.38;
+ // Broad, irregular surface movement avoids parallel wave bands.
+ vec2 flow=p*.006+vec2(time*.025,-time*.018);
+ float h=(noise(flow)-.5)*1.1;
+ h+=(noise(flow*1.83+vec2(-time*.04, time*.025))-.5)*.35;
  for(int i=0;i<12;i++){
   vec2 d=p-wakes[i].xy;
   float age=wakes[i].z;
   float r=length(d*vec2(1.,1.14));
   float front=age*27.+10.;
   float envelope=exp(-pow((r-front)/36.,2.))*exp(-age*.36)*smoothstep(0.,.4,age);
-  h+=sin((r-front)*.19)*envelope*.34;
+  h+=sin((r-front)*.10)*envelope*.16;
  }
  return h;
 }
@@ -42,19 +40,19 @@ void main(){
  vec2 p=vec2(uv.x,1.-uv.y)*size;
  float h=surface(p);
  vec2 slope=vec2(surface(p+vec2(2.,0.))-h,surface(p+vec2(0.,2.))-h)*.5;
- vec2 bend=vec2(slope.x,-slope.y)*7.5/size;
+ vec2 bend=vec2(slope.x,-slope.y)*3.0/size;
  vec3 koi=texture2D(scene,clamp(uv+bend,vec2(.001),vec2(.999))).rgb;
  // Water absorbs contrast; the highlights are drawn over (and obscure) the fish.
  vec3 color=koi*.82;
  // Only facets facing a narrow reflected light source catch silver highlights.
  // The rest of the pond stays black, without an illuminated noise/cloud texture.
  vec2 normal=slope*vec2(1.,1.3);
- float facet=exp(-pow((normal.x-.025)/.028,2.)-pow((normal.y+.021)/.025,2.));
+ float facet=exp(-pow((normal.x-.012)/.034,2.)-pow((normal.y+.010)/.032,2.));
  float sky=noise(p*.006+vec2(time*.022,-time*.014));
  float patch=smoothstep(.42,.73,sky);
  float field=1.-smoothstep(.52,.94,p.y/size.y);
- float light=facet*patch*field*.105;
- color=mix(color,vec3(.65),light);
+ float light=facet*patch*field*.14;
+ color+=vec3(.65)*light;
  color+=vec3(.0015);
  float edge=smoothstep(0.,.12,uv.x)*smoothstep(0.,.12,1.-uv.x)*smoothstep(0.,.12,uv.y)*smoothstep(0.,.12,1.-uv.y);
  color*=.5+.5*edge;

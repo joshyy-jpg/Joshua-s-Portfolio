@@ -1,4 +1,4 @@
-// Initials settle into the actual heading, then the rest of the name unfolds.
+// The full name rises beneath the koi, then both dissolve into a quick hero reveal.
 const landing = typeof window !== 'undefined' ? window.location.pathname : ''
 let played = false
 const root = () => document.documentElement
@@ -17,11 +17,13 @@ export function runIntro({ overlay, graphic, onReveal, onDone }: Parts): () => v
   let ended = false
   const animations: Animation[] = []
   const timers: number[] = []
+  let nameClone: HTMLElement | null = null
   const events = ['wheel', 'pointerdown', 'touchstart', 'keydown', 'scroll', 'hashchange', 'resize'] as const
   const cleanup = () => {
     events.forEach(event => window.removeEventListener(event, finish))
     timers.forEach(window.clearTimeout)
     animations.forEach(animation => animation.cancel())
+    nameClone?.remove()
     markIntroDone()
   }
   const finish = () => {
@@ -38,8 +40,8 @@ export function runIntro({ overlay, graphic, onReveal, onDone }: Parts): () => v
   root().classList.remove('intro-done')
   root().classList.add('intro-running', 'intro-wait')
   events.forEach(event => window.addEventListener(event, finish, { passive: true }))
-  const animate = (el: Element, frames: Keyframe[], duration: number, delay = 0) => {
-    const animation = el.animate(frames, { duration, delay, fill: 'both', easing: 'cubic-bezier(.22,1,.36,1)' })
+  const animate = (el: Element, frames: Keyframe[], duration: number, delay = 0, easing = 'cubic-bezier(.22,1,.36,1)') => {
+    const animation = el.animate(frames, { duration, delay, fill: 'both', easing })
     animations.push(animation)
     return animation
   }
@@ -50,41 +52,50 @@ export function runIntro({ overlay, graphic, onReveal, onDone }: Parts): () => v
     const heading = graphic.querySelector<HTMLElement>('.zen-name')!
     const style = getComputedStyle(heading)
     const mark = overlay.querySelector<HTMLElement>('.intro-mark')!
-    const cx = window.innerWidth / 2, cy = window.innerHeight / 2
+    const cx = window.innerWidth / 2, cy = window.innerHeight * .4
     const mw = mark.offsetWidth, mh = mark.offsetHeight
     const translate = (x: number, y: number) => `translate(${x}px, ${y}px)`
-    // Hold the mark at one scale and dissolve in place. No zoom or fly-through.
-    mark.style.transform = translate(cx - mw / 2, cy - mh / 2)
-    animate(mark, [{ opacity: 1 }, { opacity: 0 }], 650, 1350)
-    animate(overlay, [{ backgroundColor: '#080808' }, { backgroundColor: 'transparent' }], 700, 1250)
-    animate(graphic, [{ clipPath: 'inset(0)' }, { clipPath: 'inset(0)' }], 2900)
-    for (const initial of ['j', 'l']) {
-      const el = overlay.querySelector<HTMLElement>(`.intro-${initial}`)!
-      const target = graphic.querySelector<HTMLElement>(`.hero-initial-${initial}`)!
-      Object.assign(el.style, { fontFamily: style.fontFamily, fontSize: style.fontSize, fontWeight: style.fontWeight,
-        lineHeight: style.lineHeight, letterSpacing: style.letterSpacing, padding: '0', color: style.color })
-      const rect = target.getBoundingClientRect()
-      const w = el.offsetWidth, h = el.offsetHeight
-      const side = initial === 'j' ? cx - mw / 2 - w - 16 : cx + mw / 2 + 16
-      animate(el, [
-        { offset: 0, opacity: 0, transform: translate(cx - w / 2, cy - h / 2) },
-        { offset: .16, opacity: 0, transform: translate(cx - w / 2, cy - h / 2) },
-        { offset: .42, opacity: 1, transform: translate(side, cy - h / 2) },
-        { offset: .57, opacity: 1, transform: translate(side, cy - h / 2) },
-        { offset: 1, opacity: 1, transform: translate(rect.left, rect.top) },
-      ], 2050)
-      animate(target, [{ opacity: 0 }, { opacity: 0 }], 2050)
-    }
-    graphic.querySelectorAll('.hero-name-tail').forEach((tail, i) => {
-      animate(tail, [{ transform: 'translateX(-105%)', opacity: 0 }, { transform: 'translateX(0)', opacity: 1 }], 700, 2050 + i * 100)
+    const destination = heading.getBoundingClientRect()
+    const nameLeft = cx - destination.width / 2
+    const nameTop = cy + mh / 2 + 26
+    nameClone = heading.cloneNode(true) as HTMLElement
+    nameClone.removeAttribute('id')
+    nameClone.querySelector('.zen-name-red')?.remove()
+    nameClone.querySelector('a')?.setAttribute('tabindex', '-1')
+    Object.assign(nameClone.style, {
+      position: 'absolute', left: `${nameLeft}px`, top: `${nameTop}px`, margin: '0',
+      width: `${destination.width}px`, fontSize: style.fontSize, lineHeight: style.lineHeight,
+      fontFamily: style.fontFamily, fontWeight: style.fontWeight, letterSpacing: style.letterSpacing,
+      color: style.color, visibility: 'hidden',
     })
-    // Hand off the identical glyphs at the same position before revealing the suffixes.
-    timers.push(window.setTimeout(() => {
-      overlay.querySelectorAll<HTMLElement>('.intro-letter').forEach(el => { el.style.visibility = 'hidden' })
-      graphic.querySelectorAll('.hero-initial').forEach(el => el.getAnimations().forEach(a => a.cancel()))
-    }, 2050))
-    timers.push(window.setTimeout(onReveal, 1300))
-    timers.push(window.setTimeout(finish, 2900))
+    overlay.appendChild(nameClone)
+    mark.style.transform = translate(cx - mw / 2, cy - mh / 2)
+    animate(mark, [{ opacity: 1 }, { opacity: 0 }], 400, 1900)
+    animate(overlay, [{ backgroundColor: '#080808' }, { backgroundColor: 'transparent' }], 400, 1900)
+    animate(graphic, [{ clipPath: 'inset(0)' }, { clipPath: 'inset(0)' }], 3250)
+    animate(heading, [{ opacity: 0, transform: 'translateY(32px)' }, { opacity: 1, transform: 'translateY(0)' }], 400, 2200)
+    nameClone.style.visibility = 'visible'
+    animate(nameClone, [
+      { opacity: 0, transform: 'translateY(28px)' },
+      { opacity: 1, transform: 'translateY(0)' },
+    ], 750, 650)
+    // Fade the centered lockup, then reveal the real heading without moving it across the page.
+    const lockupFade = animate(nameClone, [{ opacity: 1 }, { opacity: 0 }], 400, 1900)
+    lockupFade.effect?.updateTiming({ fill: 'forwards' })
+    const highlight = heading.querySelector<HTMLElement>('.zen-name-red')!
+    animate(highlight, [
+      { offset: 0, visibility: 'visible', clipPath: 'inset(0 100% 0 0)' },
+      { offset: .45, visibility: 'visible', clipPath: 'inset(0 0 0 0)' },
+      { offset: .65, visibility: 'visible', clipPath: 'inset(0 0 0 0)' },
+      { offset: 1, visibility: 'visible', clipPath: 'inset(0 0 0 100%)' },
+    ], 750, 2350, 'cubic-bezier(.65,0,.35,1)')
+    const roles = graphic.querySelector<HTMLElement>('.zen-roles')!
+    const buttons = graphic.querySelector<HTMLElement>('.zen-ctas')!
+    for (const [el, delay] of [[roles, 2430], [buttons, 2530]] as const) {
+      animate(el, [{ opacity: 0, transform: 'translateY(-18px)' }, { opacity: 1, transform: 'translateY(0)' }], 350, delay)
+    }
+    timers.push(window.setTimeout(onReveal, 1900))
+    timers.push(window.setTimeout(finish, 3250))
   })
   return () => { ended = true; cleanup() }
 }

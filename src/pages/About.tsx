@@ -1,5 +1,5 @@
 import type { Role } from '../content/people'
-import { about, aboutPhotoGroups, education, experience, leadership, skills } from '../content/people'
+import { about, aboutPhotoGroups, education, experience, leadership, skills, storyPhotos } from '../content/people'
 import { resumeLink } from '../content/site'
 import { Link } from 'react-router-dom'
 import Lines from '../components/Lines'
@@ -68,10 +68,20 @@ export default function About() {
       </header>
 
       <section id="story" className="story grid" aria-label="My story">
+        <div className="story-photo-column">
         <Reveal as="figure" className="story-portrait">
           <Picture {...about.portrait} priority sizes="(min-width: 1024px) 25vw, 70vw" />
-          <figcaption className="meta">Joshua Lee, New York</figcaption>
+          <figcaption className="meta">Joshua Lee, Station F, Paris</figcaption>
         </Reveal>
+        <div className="story-side-photos">
+          {storyPhotos.map(photo => (
+            <Reveal as="figure" key={photo.src}>
+              <Picture {...photo} sizes="(min-width: 768px) 25vw, 45vw" />
+              <figcaption className="meta">{photo.caption}</figcaption>
+            </Reveal>
+          ))}
+        </div>
+        </div>
         <div className="story-text">
           <Reveal as="p" className="lead-serif story-lead">
             {about.lead}
