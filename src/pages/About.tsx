@@ -81,6 +81,7 @@ export default function About() {
             </Reveal>
           ))}
         </div>
+        <PhotoGroup index={0} />
         </div>
         <div className="story-text">
           <Reveal as="p" className="lead-serif story-lead">
@@ -104,15 +105,13 @@ export default function About() {
         </div>
       </section>
 
-      <PhotoGroup index={0} />
-
       <section id="experience" className="experience grid" aria-labelledby="experience-title">
         <div className="experience-side">
           <h2 id="experience-title" className="label">
             Experience
           </h2>
           <p className="inline-links">
-            <SmartLink {...resumeLink} className="link">
+            <SmartLink {...resumeLink} className="link about-resume-link">
               Résumé (PDF)
             </SmartLink>
           </p>

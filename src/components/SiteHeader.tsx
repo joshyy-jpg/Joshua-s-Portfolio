@@ -8,6 +8,7 @@ export default function SiteHeader({ home }: { home: boolean }) {
     <header className={`site-header full-menu${home ? ' site-header--home' : ''}`}>
       <Link to="/" className="header-mark" aria-label="Joshua Lee, home">
         <LogoMark />
+        <span className="header-initials" aria-hidden="true">JL</span>
       </Link>
       <nav className="site-nav" aria-label="Primary">
         <ul>
